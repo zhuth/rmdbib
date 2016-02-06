@@ -87,7 +87,7 @@ def docx_deal(docx):
     z.close()
 
     doc = zf['word/document.xml'].decode('utf-8')
-    doc = re.sub(ur'([……“”‘’])', u'</w:t></w:r><w:r><w:rPr><w:rFonts w:ascii="SimSun" w:eastAsia="SimSun"/></w:rPr><w:t>\\1</w:t></w:r><w:r><w:t>', doc)
+    doc = re.sub(ur'([……·“”‘’])', u'</w:t></w:r><w:r><w:rPr><w:rFonts w:asciiTheme="majorEastAsia" w:eastAsiaTheme="majorEastAsia" w:hAnsiTheme="majorEastAsia"/></w:rPr><w:t>\\1</w:t></w:r><w:r><w:t>', doc)
     doc = re.sub(ur'<w:p>(<w:pPr><w:pStyle w:val="(FirstParagraph|BodyText)" />)', u'<w:p>\\1<w:ind w:firstLineChars="200" w:firstLine="420"/>', doc)
     # print doc
     zf['word/document.xml'] = doc.encode('utf-8')
